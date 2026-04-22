@@ -1,10 +1,9 @@
 Welcome to jupyter-hpc's documentation!
 ===================================
 
-**jupyter-hpc** (/jupyter hpc/) is a framework to run a jupyter instance on HPC tunneling to a workstation to run notebooks.
+**ai-bunker** (/ai bunker/) is a framework to run a IDE instances on HPC tunneling to a workstation to run notebooks assisted by AI.
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+Check out the :doc:`usage` section for further information, including how to :ref:`installation` the project.
 
 .. note::
 
