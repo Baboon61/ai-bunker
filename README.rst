@@ -1,9 +1,8 @@
-Template for the Read the Docs tutorial
+Documentation about jupyter-hpc
 =======================================
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+This GitHub includes documentation to implement jupyter-hpc
 
 Read the tutorial here:
 
-https://docs.readthedocs.io/en/stable/tutorial/
+https://jupyter-hpc.readthedocs.io
