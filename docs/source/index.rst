@@ -1,4 +1,4 @@
-Welcome to jupyter-hpc's documentation!
+Welcome to ai-bunker's documentation!
 ===================================
 
 **ai-bunker** (/ai bunker/) is a framework to run a IDE instances on HPC tunneling to a workstation to run notebooks assisted by AI.
