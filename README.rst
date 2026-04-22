@@ -1,8 +1,7 @@
-Documentation about jupyter-hpc
+Documentation about ai-bunker
 =======================================
 
-This GitHub includes documentation to implement jupyter-hpc
-
+This GitHub includes documentation to implement ai-bunker
 Read the tutorial here:
 
-https://jupyter-hpc.readthedocs.io
+https://ai-bunker.readthedocs.io
