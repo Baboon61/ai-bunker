@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'jupyter-hpc'
+project = 'ai-bunker'
 copyright = '2026, Bastien Hervé'
 author = 'Bastien Hervé'
 
