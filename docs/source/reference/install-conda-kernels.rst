@@ -5,6 +5,13 @@ Use this recipe on the HPC when you want Jupyter kernels backed by conda
 environments. It starts with installing Miniforge and ends with named Python and
 R kernels that VS Code or Cursor can select through the remote Jupyter server.
 
+Conda is an environment and package manager that can install Python, R, system
+libraries, and compiled scientific packages into isolated named environments.
+It is a good fit when your HPC site already standardizes on conda, when packages
+need non-Python dependencies, or when you want an R kernel for Jupyter. In this
+workflow, Miniforge provides conda from the conda-forge ecosystem, and each
+conda environment becomes a selectable Jupyter kernel.
+
 Install Miniforge
 -----------------
 

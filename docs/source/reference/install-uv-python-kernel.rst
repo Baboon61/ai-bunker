@@ -5,6 +5,13 @@ Use this recipe on the HPC when you want a Python notebook kernel managed by
 ``uv``. It starts with installing ``uv`` and ends with a named Jupyter kernel
 that VS Code or Cursor can select through the remote Jupyter server.
 
+``uv`` is a fast Python package and project manager from Astral. It is a good
+fit when your analysis code is a Python project with a ``pyproject.toml`` file,
+when you want dependencies recorded with the project, or when you want the same
+environment to work for notebooks, scripts, tests, and command-line tools. In
+this workflow, ``uv`` creates the Python environment on the HPC and registers it
+as a Jupyter kernel.
+
 Install uv
 ----------
 
