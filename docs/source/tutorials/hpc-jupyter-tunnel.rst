@@ -53,6 +53,12 @@ The examples below use placeholders. Replace them for your site:
 Prepare notebook kernels on the HPC
 -----------------------------------
 
+In Jupyter, a kernel is the process that runs notebook cells. It imports
+packages, opens files, keeps variables in memory, and returns results to the
+notebook interface. In this workflow, the kernel runs on the HPC so protected
+data is read by an HPC process, while VS Code or Cursor remains the local
+editing interface.
+
 Before starting JupyterLab, create the kernels that notebooks will use on the
 HPC. Choose the setup recipe that matches your project:
 

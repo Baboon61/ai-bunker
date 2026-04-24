@@ -38,28 +38,71 @@ See the official `uv installation guide <https://docs.astral.sh/uv/getting-start
 for platform-specific options, version pinning, upgrades, and installer
 configuration.
 
-Create or enter the project
----------------------------
+Create a project from scratch
+-----------------------------
 
-Move to the HPC project directory that will provide the Python environment:
+The ``pyproject.toml`` file is the project recipe for the Python environment.
+It records the packages needed by the notebook code, while ``uv.lock`` records
+the exact resolved package versions. Together, those files let another HPC
+session recreate the same environment with ``uv sync``.
+
+Create a new HPC project directory if you do not already have one:
 
 .. code-block:: console
 
+   $ mkdir -p <project-dir>
    $ cd <project-dir>
 
-If the project is not already managed by ``uv``, initialize it or make sure it
-has a valid ``pyproject.toml``:
+Initialize the project:
 
 .. code-block:: console
 
    $ uv init
 
-Add the Jupyter kernel dependency and any project packages:
+This creates a starter ``pyproject.toml``. Add the Jupyter kernel dependency and
+any project packages:
 
 .. code-block:: console
 
    $ uv add --dev ipykernel
    $ uv add pandas matplotlib
+
+After these commands, ``pyproject.toml`` contains the declared dependencies and
+``uv.lock`` contains the locked versions. Commit both files if this project is
+safe to version-control.
+
+Use an existing pyproject.toml
+------------------------------
+
+If the project already has a ``pyproject.toml`` and ``uv.lock``, move to the
+project directory and recreate the environment:
+
+.. code-block:: console
+
+   $ cd <project-dir>
+   $ uv sync
+
+``uv sync`` reads ``pyproject.toml`` and ``uv.lock``, creates or updates the
+project environment, and installs the locked dependencies. Use this when you
+pull the project onto a new HPC location, switch branches, or need to rebuild
+the environment before registering the kernel.
+
+If the project has a ``pyproject.toml`` but no lock file yet, run:
+
+.. code-block:: console
+
+   $ uv lock
+   $ uv sync
+
+Add or change packages intentionally from the HPC:
+
+.. code-block:: console
+
+   $ uv add scikit-learn
+   $ uv add --dev pytest
+
+Then run ``uv sync`` again in any HPC session that should match the updated
+project environment.
 
 Register the kernel
 -------------------
@@ -87,3 +130,46 @@ List available kernels from the HPC:
 
 Start or refresh the remote Jupyter server, then select ``Python (ai-bunker)``
 from VS Code or Cursor.
+
+Manage kernels
+--------------
+
+Jupyter kernels are registered as kernel specifications. The kernelspec is a
+small metadata directory that points Jupyter to the command used to start the
+runtime.
+
+List registered kernels:
+
+.. code-block:: console
+
+   $ jupyter kernelspec list
+
+Inspect a kernel specification:
+
+.. code-block:: console
+
+   $ jupyter kernelspec list
+   $ cat ~/.local/share/jupyter/kernels/py-ai-bunker/kernel.json
+
+Remove a kernel from the Jupyter picker:
+
+.. code-block:: console
+
+   $ jupyter kernelspec remove py-ai-bunker
+
+This removes the kernelspec, not the project environment itself.
+
+Rename a kernel by reinstalling its kernelspec with a new name or display name:
+
+.. code-block:: console
+
+   $ uv run ipython kernel install \
+       --user \
+       --name py-ai-bunker-v2 \
+       --display-name "Python (ai-bunker v2)"
+
+If you no longer need the old entry, remove it:
+
+.. code-block:: console
+
+   $ jupyter kernelspec remove py-ai-bunker
