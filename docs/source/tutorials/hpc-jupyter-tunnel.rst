@@ -50,98 +50,31 @@ The examples below use placeholders. Replace them for your site:
    <local-port>       Port opened on the workstation, such as 8888
    <remote-port>      Port opened by JupyterLab on the HPC, such as 8888
 
-Prepare notebook environments on the HPC
-----------------------------------------
+Prepare notebook kernels on the HPC
+-----------------------------------
 
-Log in to the HPC and move to the project directory that will provide the
-runtime environment for the notebook work:
+Before starting JupyterLab, create the kernels that notebooks will use on the
+HPC. Choose the setup recipe that matches your project:
+
+* :doc:`Create a uv-managed Python kernel <../reference/install-uv-python-kernel>`
+* :doc:`Create conda-managed Python or R kernels <../reference/install-conda-kernels>`
+
+The short version is:
+
+* Use ``uv`` for Python projects that should be driven by ``pyproject.toml``.
+* Use conda, Mamba, or Micromamba for named Python environments or R kernels.
+* Register each environment as a Jupyter kernel before connecting from VS Code
+  or Cursor.
+
+Log in to the HPC and move to the project directory:
 
 .. code-block:: console
 
    $ ssh <hpc-login>
    $ cd <project-dir>
 
-Choose how to create the Python environment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Use ``uv`` when the project already has, or should have, a Python
-``pyproject.toml``. This keeps dependencies project-scoped and makes it easy to
-reuse the same environment outside Jupyter:
-
-If the project is not already managed by ``uv``, initialize it or make sure it
-has a valid ``pyproject.toml``. Add the Jupyter kernel dependency to the project:
-
-.. code-block:: console
-
-   $ uv add --dev ipykernel
-
-Use conda when your HPC site standardizes on conda environments, or when you
-want a named Python environment managed outside ``pyproject.toml``:
-
-.. code-block:: console
-
-   $ conda create -n py-ai-bunker -c conda-forge python ipykernel pandas matplotlib
-   $ conda activate py-ai-bunker
-
-Create an R environment with conda and IRkernel
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For R notebooks, a conda environment is often the cleanest option because R,
-``IRkernel``, and compiled R package dependencies stay in one named environment.
-Use the conda-compatible tool approved by your HPC site. The examples below use
-``conda``; replace it with ``mamba`` or ``micromamba`` if that is your site's
-standard tool.
-
-.. code-block:: console
-
-   $ conda create -n r-ai-bunker -c conda-forge r-base r-irkernel
-   $ conda activate r-ai-bunker
-
-Install any approved project packages into the same environment:
-
-.. code-block:: console
-
-   $ conda install -n r-ai-bunker -c conda-forge r-tidyverse
-
-If your project uses ``renv``, restore it from inside the conda environment.
-Make sure ``IRkernel`` remains available before registering the kernel:
-
-.. code-block:: console
-
-   $ conda activate r-ai-bunker
-   $ R -e "renv::restore()"
-
-Register environments as Jupyter kernels
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Jupyter discovers available runtimes through kernel specifications. Register
-each environment once, from the environment itself, with a short internal name
-and a readable display name.
-
-For a uv-managed Python environment:
-
-.. code-block:: console
-
-   $ cd <project-dir>
-   $ uv run ipython kernel install --user --name py-ai-bunker --display-name "Python (ai-bunker)"
-
-For a conda-managed Python environment:
-
-.. code-block:: console
-
-   $ conda activate py-ai-bunker
-   $ python -m ipykernel install --user --name py-ai-bunker --display-name "Python (ai-bunker)"
-
-For a conda-managed R environment:
-
-.. code-block:: console
-
-   $ conda activate r-ai-bunker
-   $ R -e "IRkernel::installspec(name = 'r-ai-bunker', displayname = 'R (ai-bunker)', user = TRUE)"
-
-These commands register kernel specifications that Jupyter can show in the
-notebook kernel picker. Cells run in whichever HPC-side environment backs the
-selected kernel.
+The linked recipes walk through installation from ``curl`` or installer
+download through kernel registration.
 
 .. note::
 
@@ -240,8 +173,8 @@ Switch kernels in a notebook
 Each notebook can use a different registered kernel. Use the kernel picker in
 VS Code or Cursor to switch between Python and R, or between project
 environments. If you add another uv, conda, or R environment later, repeat the
-registration command from `Register environments as Jupyter kernels`_ with a new
-``--name`` or ``name`` value and a new display name.
+kernel registration step from the relevant setup recipe with a new ``--name`` or
+``name`` value and a new display name.
 
 Restart Jupyter or refresh the kernel list if the new kernel does not appear.
 

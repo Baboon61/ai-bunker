@@ -43,4 +43,6 @@ sections.
    :caption: Reference
    :hidden:
 
+   reference/install-uv-python-kernel
+   reference/install-conda-kernels
    reference/hpc-jupyter-commands
