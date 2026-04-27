@@ -96,10 +96,13 @@ After the allocation starts, identify the compute node:
 
    $ hostname
 
-Keep this terminal open. The reported hostname is the node that the SSH tunnel
-must reach.
+.. important::
 
-.. note::
+   Keep this terminal open.
+   The reported hostname is the node that the SSH tunnel
+   must reach.
+
+.. seealso::
 
    If your HPC workflow prefers batch submission, you can start the Jupyter
    instance with ``sbatch`` instead of ``salloc``. See
@@ -117,30 +120,39 @@ must reach.
 Start JupyterLab on the compute node
 ------------------------------------
 
-From inside the SLURM allocation, start JupyterLab without opening a browser.
-For a uv-managed project:
+From inside the SLURM allocation, start JupyterLab without opening a browser:
 
-.. code-block:: console
+.. tabs::
 
-   $ cd <project-dir>
-   $ uv run --with jupyter jupyter lab \
-       --no-browser \
-       --ip=127.0.0.1 \
-       --port=<remote-port>
+   .. tab:: uv
 
-For a conda-managed environment, activate the environment first and then launch
-JupyterLab:
+      For a uv-managed project:
 
-.. code-block:: console
+      .. code-block:: console
 
-   $ cd <project-dir>
-   $ conda activate py-ai-bunker
-   $ jupyter lab \
-       --no-browser \
-       --ip=127.0.0.1 \
-       --port=<remote-port>
+         $ cd <project-dir>
+         $ uv run --with jupyter jupyter lab \
+             --no-browser \
+             --ip=127.0.0.1 \
+             --port=<remote-port>
 
-Jupyter prints a URL that includes a token. Keep the token private. Do not paste
+   .. tab:: conda
+
+      For a conda-managed environment, activate the environment first and then
+      launch JupyterLab:
+
+      .. code-block:: console
+
+         $ cd <project-dir>
+         $ conda activate py-ai-bunker
+         $ jupyter lab \
+             --no-browser \
+             --ip=127.0.0.1 \
+             --port=<remote-port>
+
+.. note::
+   
+   Jupyter prints a URL that includes a token. Keep the token private. Do not paste
 it into source files, shared tickets, commits, or chat logs.
 
 Create the SSH tunnel from the workstation
