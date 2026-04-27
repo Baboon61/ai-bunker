@@ -117,12 +117,25 @@ must reach.
 Start JupyterLab on the compute node
 ------------------------------------
 
-From inside the SLURM allocation, start JupyterLab without opening a browser:
+From inside the SLURM allocation, start JupyterLab without opening a browser.
+For a uv-managed project:
 
 .. code-block:: console
 
    $ cd <project-dir>
    $ uv run --with jupyter jupyter lab \
+       --no-browser \
+       --ip=127.0.0.1 \
+       --port=<remote-port>
+
+For a conda-managed environment, activate the environment first and then launch
+JupyterLab:
+
+.. code-block:: console
+
+   $ cd <project-dir>
+   $ conda activate py-ai-bunker
+   $ jupyter lab \
        --no-browser \
        --ip=127.0.0.1 \
        --port=<remote-port>
@@ -148,8 +161,12 @@ For example, if JupyterLab is listening on port ``8888`` on compute node
 .. code-block:: console
 
    $ ssh -N -L 8888:cn042:8888 login.cluster.example
+   or
+   $ ssh -t -t login.cluster.example -L 8888:127.0.0.1:8888 ssh cn042 -L 8888:127.0.0.1:8888
 
-Keep the tunnel running while you use the notebooks.
+.. important::
+
+   Keep the tunnel running while you use the notebooks.
 
 Connect from VS Code or Cursor
 ------------------------------
