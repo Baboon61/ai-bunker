@@ -45,4 +45,5 @@ sections.
 
    reference/install-uv-python-kernel
    reference/install-conda-kernels
+   reference/manage-kernel
    reference/hpc-jupyter-commands

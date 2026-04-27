@@ -119,57 +119,8 @@ Register the uv environment as a named Jupyter kernel:
 The ``--name`` value is the internal kernel identifier. The ``--display-name``
 value is what users see in the notebook kernel picker.
 
-Verify the kernel
------------------
+Next steps
+----------
 
-List available kernels from the HPC:
-
-.. code-block:: console
-
-   $ jupyter kernelspec list
-
-Start or refresh the remote Jupyter server, then select ``Python (ai-bunker)``
-from VS Code or Cursor.
-
-Manage kernels
---------------
-
-Jupyter kernels are registered as kernel specifications. The kernelspec is a
-small metadata directory that points Jupyter to the command used to start the
-runtime.
-
-List registered kernels:
-
-.. code-block:: console
-
-   $ jupyter kernelspec list
-
-Inspect a kernel specification:
-
-.. code-block:: console
-
-   $ jupyter kernelspec list
-   $ cat ~/.local/share/jupyter/kernels/py-ai-bunker/kernel.json
-
-Remove a kernel from the Jupyter picker:
-
-.. code-block:: console
-
-   $ jupyter kernelspec remove py-ai-bunker
-
-This removes the kernelspec, not the project environment itself.
-
-Rename a kernel by reinstalling its kernelspec with a new name or display name:
-
-.. code-block:: console
-
-   $ uv run ipython kernel install \
-       --user \
-       --name py-ai-bunker-v2 \
-       --display-name "Python (ai-bunker v2)"
-
-If you no longer need the old entry, remove it:
-
-.. code-block:: console
-
-   $ jupyter kernelspec remove py-ai-bunker
+After installation, verify that Jupyter can see the new kernel and use
+:doc:`manage-kernel` for inspection, renaming, and removal tasks.

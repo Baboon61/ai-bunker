@@ -96,76 +96,8 @@ policy for installing R packages from inside the activated conda environment:
    $ conda activate r-ai-bunker
    $ R -e "install.packages('<package>')"
 
-Verify the kernels
-------------------
+Next steps
+----------
 
-List available kernels from the HPC:
-
-.. code-block:: console
-
-   $ jupyter kernelspec list
-
-Start or refresh the remote Jupyter server, then select ``Python (ai-bunker)``
-or ``R (ai-bunker)`` from VS Code or Cursor.
-
-Manage kernels
---------------
-
-Jupyter kernels are registered as kernel specifications. The kernelspec is a
-small metadata directory that points Jupyter to the command used to start the
-runtime. Removing a kernelspec only removes the entry from Jupyter; it does not
-delete the conda environment.
-
-List registered kernels:
-
-.. code-block:: console
-
-   $ jupyter kernelspec list
-
-Inspect a kernel specification:
-
-.. code-block:: console
-
-   $ jupyter kernelspec list
-   $ cat ~/.local/share/jupyter/kernels/py-ai-bunker/kernel.json
-   $ cat ~/.local/share/jupyter/kernels/r-ai-bunker/kernel.json
-
-Remove a kernel from the Jupyter picker:
-
-.. code-block:: console
-
-   $ jupyter kernelspec remove py-ai-bunker
-   $ jupyter kernelspec remove r-ai-bunker
-
-Rename a Python kernel by reinstalling its kernelspec with a new name or
-display name:
-
-.. code-block:: console
-
-   $ conda activate py-ai-bunker
-   $ python -m ipykernel install \
-       --user \
-       --name py-ai-bunker-v2 \
-       --display-name "Python (ai-bunker v2)"
-
-Rename an R kernel the same way, by reinstalling its kernelspec from the conda
-environment:
-
-.. code-block:: console
-
-   $ conda activate r-ai-bunker
-   $ R -e "IRkernel::installspec(name = 'r-ai-bunker-v2', displayname = 'R (ai-bunker v2)', user = TRUE)"
-
-If you no longer need the old entries, remove them:
-
-.. code-block:: console
-
-   $ jupyter kernelspec remove py-ai-bunker
-   $ jupyter kernelspec remove r-ai-bunker
-
-Delete a conda environment only when no kernels or jobs still use it:
-
-.. code-block:: console
-
-   $ conda env remove -n py-ai-bunker
-   $ conda env remove -n r-ai-bunker
+After installation, verify that Jupyter can see the new kernels and use
+:doc:`manage-kernel` for inspection, renaming, removal, and environment cleanup.

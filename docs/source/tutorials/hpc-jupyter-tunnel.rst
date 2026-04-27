@@ -29,14 +29,8 @@ Before starting, make sure you have:
 
 * SSH access to the HPC login node.
 * A SLURM partition that allows interactive or batch jobs.
-* ``uv`` available on the HPC for the JupyterLab server and uv-managed Python
-  kernels.
-* Conda, Mamba, or Micromamba available on the HPC for conda-managed Python or
-  R kernels.
-* VS Code or Cursor installed on the workstation with Jupyter support enabled.
-* A Python project with a ``pyproject.toml`` file, if you want a uv-managed
-  Python kernel.
 * Access to the HPC filesystem location that contains the protected data.
+* VS Code or Cursor installed on the workstation with Jupyter support enabled.
 
 The examples below use placeholders. Replace them for your site:
 
@@ -60,27 +54,11 @@ data is read by an HPC process, while VS Code or Cursor remains the local
 editing interface.
 
 Before starting JupyterLab, create the kernels that notebooks will use on the
-HPC. Choose the setup recipe that matches your project:
+HPC. For python centered kernels, please use ``uv``, for any other kernels like R, please use `conda` or `mamba`.
+The linked recipes show how to set up kernels for Python and R:
 
 * :doc:`/reference/install-uv-python-kernel`
 * :doc:`/reference/install-conda-kernels`
-
-The short version is:
-
-* Use ``uv`` for Python projects that should be driven by ``pyproject.toml``.
-* Use conda, Mamba, or Micromamba for named Python environments or R kernels.
-* Register each environment as a Jupyter kernel before connecting from VS Code
-  or Cursor.
-
-Log in to the HPC and move to the project directory:
-
-.. code-block:: console
-
-   $ ssh <hpc-login>
-   $ cd <project-dir>
-
-The linked recipes walk through installation from ``curl`` or installer
-download through kernel registration.
 
 .. note::
 
@@ -94,6 +72,13 @@ download through kernel registration.
 Allocate a SLURM job
 --------------------
 
+Through a terminal, log in to the HPC and move to the project directory:
+
+.. code-block:: console
+
+   $ ssh <hpc-login>
+   $ cd <project-dir>
+   
 Start an interactive job for the JupyterLab server. The exact resource request
 depends on your HPC policy and workload:
 
