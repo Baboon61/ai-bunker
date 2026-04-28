@@ -13,17 +13,12 @@ or R kernels while keeping execution near the protected data.
 The key boundary is intentional: data and kernel execution stay on the HPC,
 while the workstation provides the editing experience and AI assistance.
 
-Start here
-----------
+.. note::
 
-New users should begin with the end-to-end walkthrough:
-
-* :doc:`Run JupyterLab on an HPC through an SSH tunnel <tutorials/hpc-jupyter-tunnel>`
-
-Background and command templates are available in the concepts and references
+   Background and command templates are available in the concepts and references
 sections.
 
-.. note::
+.. warning::
 
    This project is under active development.
 

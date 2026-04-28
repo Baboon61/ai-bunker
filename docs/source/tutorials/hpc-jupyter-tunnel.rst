@@ -66,7 +66,7 @@ The linked recipes show how to set up kernels for Python and R:
       .. image:: /_static/uv-logo.png
          :alt: uv logo
          :align: right
-         :width: 120
+         :width: 60
 
       Create a Python kernel from a ``uv`` managed project and register it for
       remote Jupyter use on the HPC.
@@ -82,7 +82,7 @@ The linked recipes show how to set up kernels for Python and R:
       .. image:: /_static/conda-logo.png
          :alt: conda logo
          :align: right
-         :width: 120
+         :width: 60
 
       Create Python or R kernels from ``conda`` managed project and register it
       for remote Jupyter use on the HPC.
@@ -204,17 +204,13 @@ For example, if JupyterLab is listening on port ``8888`` on compute node
 .. code-block:: console
 
    $ ssh -N -L 8888:cn042:8888 login.cluster.example
-   or
+
+or
+
+.. code-block:: console
+   
    $ ssh -t -t login.cluster.example -L 8888:127.0.0.1:8888 ssh cn042 -L 8888:127.0.0.1:8888
 
 .. important::
 
    Keep the tunnel running while you use the notebooks.
-
-Connect from VS Code or Cursor
-------------------------------
-
-After the SSH tunnel is running, connect the local editor to the forwarded
-Jupyter server and choose the remote kernel for each notebook. Continue with
-:doc:`load-kernel-from-ide` for the IDE connection, kernel selection, package
-management, security boundary, and troubleshooting guidance.
