@@ -20,7 +20,7 @@ New users should begin with the end-to-end walkthrough:
 
 * :doc:`Run JupyterLab on an HPC through an SSH tunnel <tutorials/hpc-jupyter-tunnel>`
 
-Background and command templates are available in the concept and reference
+Background and command templates are available in the concepts and references
 sections.
 
 .. note::
@@ -41,10 +41,10 @@ sections.
    concepts/execution-boundaries
 
 .. toctree::
-   :caption: Reference
+   :caption: References
    :hidden:
 
-   reference/install-uv-python-kernel
-   reference/install-conda-kernels
-   reference/manage-kernel
-   reference/hpc-jupyter-commands
+   references/install-uv-python-kernel
+   references/install-conda-kernels
+   references/manage-kernel
+   references/hpc-jupyter-commands

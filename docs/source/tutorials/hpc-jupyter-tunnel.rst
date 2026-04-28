@@ -54,16 +54,16 @@ data is read by an HPC process, while VS Code or Cursor remains the local
 editing interface.
 
 Before starting JupyterLab, create the kernels that notebooks will use on the
-HPC. For python centered kernels, please use ``uv``, for any other kernels like R, please use `conda` or `mamba`.
+HPC. For python centered kernels, please use ``uv``, for any other kernels like R, please use ``conda`` or ``mamba``.
 The linked recipes show how to set up kernels for Python and R:
 
 .. grid:: 2
 
    .. grid-item-card::
-      :link: /reference/install-uv-python-kernel
+      :link: /references/install-uv-python-kernel
       :link-type: doc
 
-      .. image:: /static/uv-logo.png
+      .. image:: /_static/uv-logo.png
          :alt: uv logo
          :align: center
          :width: 120
@@ -75,10 +75,10 @@ The linked recipes show how to set up kernels for Python and R:
       Environment manager :bdg-info:`uv`
 
    .. grid-item-card::
-      :link: /reference/install-conda-kernels
+      :link: /references/install-conda-kernels
       :link-type: doc
 
-      .. image:: /static/conda-logo.png
+      .. image:: /_static/conda-logo.png
          :alt: conda logo
          :align: center
          :width: 120
@@ -135,7 +135,7 @@ After the allocation starts, identify the compute node:
 
    If your HPC workflow prefers batch submission, you can start the Jupyter
    instance with ``sbatch`` instead of ``salloc``. See
-   :doc:`../reference/hpc-jupyter-commands` for a reusable batch job example.
+   :doc:`../references/hpc-jupyter-commands` for a reusable batch job example.
 
 .. note::
 
@@ -416,6 +416,6 @@ If the expected kernel is missing, rerun the ``ipython kernel install`` command
 or the ``IRkernel::installspec`` command from the HPC project and refresh the
 Jupyter server connection.
 
-See :doc:`/reference/hpc-jupyter-commands` for reusable JupyterLab command
+See :doc:`/references/hpc-jupyter-commands` for reusable JupyterLab command
 templates and :doc:`/concepts/execution-boundaries` for the execution and
 data boundary model.
