@@ -72,6 +72,7 @@ The linked recipes show how to set up kernels for Python and R:
       remote Jupyter use on the HPC.
 
       Best for :bdg-success:`Python`
+      
       Environment manager :bdg-info:`uv`
 
    .. grid-item-card::
@@ -87,6 +88,7 @@ The linked recipes show how to set up kernels for Python and R:
       for remote Jupyter use on the HPC.
 
       Best for :bdg-success:`Python` :bdg-success:`R`
+
       Environment manager :bdg-info:`conda` :bdg-info:`mamba`
 
 .. note::
