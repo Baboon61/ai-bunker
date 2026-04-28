@@ -59,15 +59,16 @@ The linked recipes show how to set up kernels for Python and R:
 
 .. grid:: 2
 
-   .. grid-item-card:: ""
+   .. grid-item-card::
       :link: /reference/install-uv-python-kernel
       :link-type: doc
 
       .. image:: /static/uv-logo.png
          :alt: uv logo
+         :align: center
          :width: 120
 
-      Create a Python kernel from a ``uv``-managed project and register it for
+      Create a Python kernel from a ``uv`` managed project and register it for
       remote Jupyter use on the HPC.
 
       Best for
@@ -75,16 +76,17 @@ The linked recipes show how to set up kernels for Python and R:
       Environment manager
            :bdg-info:`uv`
 
-   .. grid-item-card:: ""
+   .. grid-item-card::
       :link: /reference/install-conda-kernels
       :link-type: doc
 
       .. image:: /static/conda-logo.png
          :alt: conda logo
+         :align: center
          :width: 120
 
-      Create Python or R kernels from conda environments when you need
-      compiled scientific packages or R support.
+      Create Python or R kernels from ``conda`` managed project and register it
+      for remote Jupyter use on the HPC.
 
       Best for
            :bdg-success:`Python` :bdg-success:`R`
@@ -214,23 +216,13 @@ For example, if JupyterLab is listening on port ``8888`` on compute node
 Connect from VS Code or Cursor
 ------------------------------
 
-In VS Code or Cursor:
+After the SSH tunnel is running, connect the local editor to the forwarded
+Jupyter server and choose the remote kernel for each notebook. For the full
+step-by-step flow, see :doc:`connect-vscode-cursor`.
 
-1. Open your local notebook project.
-2. Open the command palette.
-3. Run ``Jupyter: Specify Jupyter Server for Connections``.
-4. Choose an existing server or enter the forwarded URL:
-
-   .. code-block:: text
-
-      http://127.0.0.1:<local-port>/?token=<token>
-
-5. Open a notebook and select the ``Python (ai-bunker)`` or ``R (ai-bunker)``
-   kernel.
-
-The notebook file is edited locally, but cells run in the selected kernel on the
-HPC. Paths such as ``<data-dir>`` are resolved by the remote kernel, not by the
-workstation.
+The notebook file is edited locally, but cells run in the selected kernel on
+the HPC. Paths such as ``<data-dir>`` are resolved by the remote kernel, not by
+the workstation.
 
 Switch kernels in a notebook
 ----------------------------

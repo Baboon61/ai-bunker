@@ -32,6 +32,7 @@ sections.
    :hidden:
 
    tutorials/hpc-jupyter-tunnel
+   tutorials/connect-vscode-cursor
 
 .. toctree::
    :caption: Concepts
