@@ -32,7 +32,7 @@ sections.
    :hidden:
 
    tutorials/hpc-jupyter-tunnel
-   tutorials/connect-vscode-cursor
+   tutorials/load-kernel-from-ide
 
 .. toctree::
    :caption: Concepts
