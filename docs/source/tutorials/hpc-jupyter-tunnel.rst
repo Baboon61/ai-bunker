@@ -65,7 +65,7 @@ The linked recipes show how to set up kernels for Python and R:
 
       .. image:: /_static/uv-logo.png
          :alt: uv logo
-         :align: center
+         :align: right
          :width: 120
 
       Create a Python kernel from a ``uv`` managed project and register it for
@@ -80,7 +80,7 @@ The linked recipes show how to set up kernels for Python and R:
 
       .. image:: /_static/conda-logo.png
          :alt: conda logo
-         :align: center
+         :align: right
          :width: 120
 
       Create Python or R kernels from ``conda`` managed project and register it
